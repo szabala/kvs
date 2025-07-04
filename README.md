@@ -1,0 +1,3 @@
+# KVS Database Implementation
+
+This repository is an implementation of the database guide from [Build Your Own Database](https://build-your-own.org/database/#table-of-contents), built to understand databases from the bottom up through small steps with simple Go code. The project follows a progressive approach: starting with a B+tree data structure for querying and manipulating data, making it durable to distinguish it from a simple file, building a relational database with concurrent transactions on top of the copy-on-write B+tree key-value store, and finally adding a SQL-like query language as the finishing touch.

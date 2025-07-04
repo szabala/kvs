@@ -6,11 +6,11 @@ import (
 	"os"
 )
 
-// ┌───🬼  create   ┌───🬼   ┌───🬼  rename   ┌───🬼
-//  1 │ ────────→  1 │ +  2 │ ────────→  2 │
-// └───┘           └───┘   └───┘           └───┘
-//
-//	old             old     temp            new
+// SaveData atomically saves data to a file at the specified path.
+// It creates a temporary file with a unique name, writes the data to it,
+// and then renames it to the original file name. This ensures that the
+// original file is not modified until the new data is fully written,
+// preventing data corruption in case of a failure during the write process.
 func SaveData(path string, data []byte) error {
 	tmp := fmt.Sprintf("%s.tmp.%d", path, rand.Int32())
 	fp, err := os.OpenFile(tmp, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0664)
